@@ -1,7 +1,7 @@
 import { Float, Line, Points, PointMaterial } from "@react-three/drei";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
-import type { Group, Mesh } from "three";
+import type { Group, Mesh, Points as ThreePoints } from "three";
 
 function CameraRig({ reducedMotion }: { reducedMotion: boolean }) {
   const { camera, pointer } = useThree();
@@ -74,7 +74,7 @@ function Orbit({ radius, speed, reducedMotion }: { radius: number; speed: number
 }
 
 function ParticleField({ reducedMotion }: { reducedMotion: boolean }) {
-  const points = useRef<THREE.Points>(null);
+  const points = useRef<ThreePoints>(null);
   const positions = useMemo(() => {
     const data = new Float32Array(240 * 3);
     for (let index = 0; index < 240; index += 1) {
