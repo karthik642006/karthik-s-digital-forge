@@ -10,7 +10,6 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
-import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
@@ -37,9 +36,6 @@ function NotFoundComponent() {
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
-  useEffect(() => {
-    reportLovableError(error, { boundary: "tanstack_root_error_component" });
-  }, [error]);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -77,20 +73,25 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Karthik — Full Stack & Creative Developer" },
-      { name: "description", content: "Portfolio of Karthik, a full stack and creative developer building scalable, thoughtful digital products." },
-      { name: "author", content: "Karthik" },
-      { property: "og:title", content: "Karthik — Full Stack & Creative Developer" },
-      { property: "og:description", content: "Full stack projects, creative development, and engineering experience from Karthik." },
+      { title: "Karthik K | Full Stack Developer" },
+      { name: "description", content: "Karthik K — Computer Science Engineer and Full Stack Developer." },
+      { name: "author", content: "Karthik K" },
+      { property: "og:title", content: "Karthik K | Full Stack Developer" },
+      { property: "og:description", content: "Karthik K — Computer Science Engineer and Full Stack Developer." },
       { property: "og:type", content: "website" },
+      { property: "og:image", content: "https://karthik-s-digital-forge.vercel.app/og-image.svg" },
+      { property: "og:image:alt", content: "Karthik K — Full Stack Developer" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Karthik K | Full Stack Developer" },
+      { name: "twitter:description", content: "Karthik K — Computer Science Engineer and Full Stack Developer." },
+      { name: "twitter:image", content: "https://karthik-s-digital-forge.vercel.app/og-image.svg" },
     ],
     links: [
       {
         rel: "stylesheet",
         href: appCss,
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" },
