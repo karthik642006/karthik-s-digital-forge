@@ -1,6 +1,6 @@
 import { ClientOnly, createFileRoute } from "@tanstack/react-router";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
-import { ArrowDown, ArrowUpRight, Braces, Check, ChevronRight, Github, GraduationCap, Layers3, Linkedin, Mail, Menu, Send, Sparkles, X } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Braces, ChevronRight, Github, GraduationCap, Layers3, Linkedin, Mail, Menu, Sparkles, X } from "lucide-react";
 import { lazy, Suspense, useEffect, useRef, useState, type MouseEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
