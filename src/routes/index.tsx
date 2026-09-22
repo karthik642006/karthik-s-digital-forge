@@ -13,7 +13,7 @@ const navItems = ["About", "Experience", "Projects", "Skills", "Contact"];
 const experiences = [
   { role: "Full Stack Developer", org: "TestLoop — Testing Platform", detail: "Built a testers marketplace with app assets, MCP, XP levels, streaks, rewards, credits, feedback flows, image uploads, and real-time updates.", tech: ["React", "Supabase", "Realtime", "Storage"] },
   { role: "Web Developer", org: "Personal Projects", detail: "Created full stack web platforms with authentication, real-time updates, file uploads, and deployments across modern cloud platforms.", tech: ["React.js", "Node.js", "Express.js", "MongoDB"] },
-  { role: "Internship Experience", org: "Infosys", detail: "Completed an internship experience at Infosys. This entry is intentionally kept concise because no role, dates, or project details were provided in the current portfolio source.", tech: ["Infosys", "Internship"] },
+  { role: "Infosys InStep Intern", org: "Infosys", detail: "Completed an Infosys InStep internship experience. The portfolio keeps the description factual without adding dates, role-specific responsibilities, or project metrics that were not provided.", tech: ["Infosys", "InStep", "Internship"] },
   { role: "Contributor · Internship Experience", org: "Open Source — MalariaGEN, Django", detail: "Fixed bugs, improved data processing, implemented test cases, and contributed through established project guidelines and collaborative Git workflows.", tech: ["Python", "Django", "Testing", "Git/GitHub"] },
 ];
 const projects = [
