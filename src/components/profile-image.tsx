@@ -5,13 +5,13 @@ type ProfileImageProps = {
   alt: string;
 };
 
-const LOVABLE_ASSET_ORIGIN = "https://id-preview--73ce6d0b-ad71-437c-9d4a-3aca9576b80c.lovable.app";
+const DEFAULT_PROFILE_IMAGE = "https://github.com/karthik642006.png";
 
 export function ProfileImage({ src, alt }: ProfileImageProps) {
   const imageRef = useRef<HTMLImageElement>(null);
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
-  const imageUrl = src.startsWith("http") ? src : `${LOVABLE_ASSET_ORIGIN}${src}`;
+  const imageUrl = src.startsWith("http") && !src.includes("lovable.app") ? src : DEFAULT_PROFILE_IMAGE;
 
   useEffect(() => {
     const image = imageRef.current;
