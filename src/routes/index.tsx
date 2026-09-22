@@ -85,7 +85,7 @@ function Portfolio() {
 
 function Section({ id, number, label, children }: { id: string; number: string; label: string; children: React.ReactNode }) { return <motion.section id={id} className="scroll-mt-24 border-b border-border bg-background/85 py-24 backdrop-blur-sm sm:py-32" initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-80px" }}><div className="mx-auto max-w-6xl px-5"><div className="mb-12 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground"><span className="text-primary">{number}</span><span className="h-px w-8 bg-border"/>{label}</div>{children}</div></motion.section>; }
 
-function Portrait() { const [missing, setMissing] = useState(false); const portraitUrl = "/karthik-profile.jpg"; return <motion.div initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .25 }} className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-md border border-border bg-surface shadow-2xl"><div className="absolute inset-3 border border-border"/>{!missing && <img src={portraitUrl} onError={() => setMissing(true)} alt="Portrait of Karthik" className="h-full w-full object-cover object-center"/>}{missing && <div className="grid h-full place-items-center p-8 text-center"><div><div className="mx-auto grid size-20 place-items-center rounded-full border border-primary/40 bg-accent font-mono text-2xl text-primary">KK</div><p className="mt-6 font-mono text-xs text-muted-foreground">/karthik-portrait.jpg</p><p className="mt-2 text-xs text-muted-foreground">Upload /public/karthik-profile.jpg in GitHub</p></div></div>}<div className="absolute bottom-5 left-5 right-5 flex items-center justify-between rounded-md border border-border bg-surface/85 px-4 py-3 backdrop-blur-xl"><span className="font-mono text-xs">KARTHIK.DEV</span><span className="flex items-center gap-2 text-[10px] uppercase text-primary"><span className="size-1.5 animate-pulse rounded-full bg-primary"/>Online</span></div></motion.div>; }
+function Portrait() { const portraitUrl = portraitAsset.url; return <motion.div initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: .25 }} className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-md border border-border bg-surface shadow-2xl"><div className="absolute inset-3 border border-border"/><img src={portraitUrl} alt="Portrait of Karthik" className="h-full w-full object-cover object-center"/><div className="absolute bottom-5 left-5 right-5 flex items-center justify-between rounded-md border border-border bg-surface/85 px-4 py-3 backdrop-blur-xl"><span className="font-mono text-xs">KARTHIK.DEV</span><span className="flex items-center gap-2 text-[10px] uppercase text-primary"><span className="size-1.5 animate-pulse rounded-full bg-primary"/>Online</span></div></motion.div>; }
 
 function ExperienceItem({ item, index }: { item: typeof experiences[number]; index: number }) { const [open, setOpen] = useState(index === 0); return <article className="border-b border-border"><button className="grid w-full gap-4 py-6 text-left sm:grid-cols-[3rem_1fr_auto] sm:items-center" onClick={() => setOpen(!open)} aria-expanded={open}><span className="font-mono text-xs text-primary">0{index + 1}</span><span><strong className="block font-semibold">{item.role}</strong><span className="mt-1 block text-sm text-muted-foreground">{item.org}</span></span><ChevronRight className={`size-5 text-muted-foreground transition-transform ${open ? "rotate-90" : ""}`}/></button><AnimatePresence initial={false}>{open && <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden"><div className="pb-7 sm:pl-[4rem]"><p className="max-w-3xl leading-7 text-muted-foreground">{item.detail}</p><div className="mt-4 flex flex-wrap gap-2">{item.tech.map(t => <Tag key={t}>{t}</Tag>)}</div></div></motion.div>}</AnimatePresence></article>; }
 
@@ -108,20 +108,3 @@ function ContactRow({ icon, label }: { icon: React.ReactNode; label: string }) {
     <span className="ml-auto font-mono text-[10px] uppercase text-primary">{label === "Email" ? "karthikk642006@gmail.com" : "Open ↗"}</span>
   </a>;
 }
-
-function ContactForm() {
-  const [sent, setSent] = useState(false);
-  const submit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const form = new FormData(event.currentTarget);
-    const subject = encodeURIComponent("Portfolio enquiry for Karthik");
-    const body = encodeURIComponent(`Hi Karthik,
-
-Name: ${String(form.get("name") ?? "")}
-Email: ${String(form.get("email") ?? "")}
-
-${String(form.get("message") ?? "")}`);
-    window.location.href = `mailto:karthikk642006@gmail.com?subject=${subject}&body=${body}`;
-    setSent(true);
-  };
-  return <form onSubmit={submit} className="border border-border bg-card p-6 sm:p-8"><div className="grid gap-4 sm:grid-cols-2"><label className="text-xs text-muted-foreground">Name<Input required name="name" className="mt-2 h-11 bg-background/40" placeholder="Your name"/></label><label className="text-xs text-muted-foreground">Email<Input required name="email" type="email" className="mt-2 h-11 bg-background/40" placeholder="you@example.com"/></label></div><label className="mt-4 block text-xs text-muted-foreground">Message<Textarea required name="message" className="mt-2 min-h-36 bg-background/40" placeholder="Tell me about the opportunity or project."/></label><Button type="submit" variant="hero" size="lg" className="mt-5 w-full">{sent ? <><Check/>Message prepared</> : <>Prepare message <Send/></>}</Button>{sent && <p role="status" className="mt-3 text-center text-xs text-muted-foreground">Your email client will open with the message addressed to Karthik.</p>}</form>; }
