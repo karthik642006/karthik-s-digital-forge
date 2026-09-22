@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type ProfileImageProps = {
   src: string;
@@ -8,9 +8,17 @@ type ProfileImageProps = {
 const LOVABLE_ASSET_ORIGIN = "https://id-preview--73ce6d0b-ad71-437c-9d4a-3aca9576b80c.lovable.app";
 
 export function ProfileImage({ src, alt }: ProfileImageProps) {
+  const imageRef = useRef<HTMLImageElement>(null);
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
   const imageUrl = src.startsWith("http") ? src : `${LOVABLE_ASSET_ORIGIN}${src}`;
+
+  useEffect(() => {
+    const image = imageRef.current;
+    if (!image?.complete) return;
+    if (image.naturalWidth > 0) setLoaded(true);
+    else setFailed(true);
+  }, [imageUrl]);
 
   return (
     <div className="relative h-full w-full bg-surface-strong" aria-busy={!loaded && !failed}>
@@ -26,6 +34,7 @@ export function ProfileImage({ src, alt }: ProfileImageProps) {
         </div>
       ) : (
         <img
+          ref={imageRef}
           src={imageUrl}
           alt={alt}
           width={900}
