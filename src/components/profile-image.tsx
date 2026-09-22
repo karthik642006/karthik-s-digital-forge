@@ -5,7 +5,7 @@ type ProfileImageProps = {
   alt: string;
 };
 
-const DEFAULT_PROFILE_IMAGE = "https://github.com/karthik642006.png";
+const DEFAULT_PROFILE_IMAGE = "/karthik-profile.jpg";
 
 export function ProfileImage({ src, alt }: ProfileImageProps) {
   const imageRef = useRef<HTMLImageElement>(null);
