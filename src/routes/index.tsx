@@ -1,11 +1,10 @@
 import { ClientOnly, createFileRoute } from "@tanstack/react-router";
 import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Braces, Check, ChevronRight, Github, GraduationCap, Layers3, Linkedin, Mail, Menu, Send, Sparkles, X } from "lucide-react";
-import { lazy, Suspense, useEffect, useRef, useState, type FormEvent, type MouseEvent } from "react";
+import { lazy, Suspense, useEffect, useRef, useState, type MouseEvent } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import portraitAsset from "@/assets/karthik-portrait.png.asset.json";
 
 const HeroScene = lazy(() => import("@/components/hero-scene").then((module) => ({ default: module.HeroScene })));
 
@@ -78,7 +77,7 @@ function Portfolio() {
       <Section id="experience" number="02" label="Experience"><h2 className="mb-12 text-3xl font-semibold sm:text-5xl">Where I’ve built and contributed.</h2><div className="border-t border-border">{experiences.map((item, i) => <ExperienceItem key={item.role} item={item} index={i} />)}</div></Section>
       <Section id="projects" number="03" label="Selected work"><div className="mb-12 flex flex-wrap items-end justify-between gap-4"><h2 className="text-3xl font-semibold sm:text-5xl">Systems built to be used.</h2><p className="font-mono text-xs text-muted-foreground">04 PROJECTS / DETAILS INSIDE</p></div><div className="grid gap-4 md:grid-cols-2">{projects.map((project, i) => <ProjectCard key={project.title} project={project} index={i} reducedMotion={reducedMotion} />)}</div></Section>
       <Section id="skills" number="04" label="Capabilities"><div className="grid items-center gap-12 lg:grid-cols-[.7fr_1.3fr]"><div><h2 className="text-3xl font-semibold sm:text-5xl">A connected toolkit.</h2><p className="mt-5 leading-7 text-muted-foreground">From interface to infrastructure, each technology supports a practical role in building complete, maintainable products.</p></div><SkillsConstellation reducedMotion={reducedMotion}/></div></Section>
-      <Section id="contact" number="05" label="Contact"><div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr]"><div><h2 className="text-3xl font-semibold sm:text-5xl">Let’s build something useful.</h2><p className="mt-5 leading-7 text-muted-foreground">Have a product idea, role, or open-source project in mind? Start a conversation.</p><div className="mt-8 space-y-3"><ContactRow icon={<Mail/>} label="Email"/><ContactRow icon={<Github/>} label="GitHub"/><ContactRow icon={<Linkedin/>} label="LinkedIn"/></div><p className="mt-5 text-xs text-muted-foreground">Direct contact links are configured from the GitHub-connected portfolio profile.</p></div><ContactForm /></div></Section>
+      <Section id="contact" number="05" label="Contact"><div><h2 className="text-3xl font-semibold sm:text-5xl">Let’s build something useful.</h2><p className="mt-5 leading-7 text-muted-foreground">Have a product idea, role, or open-source project in mind? Reach out directly.</p><div className="mt-8 space-y-3"><ContactRow icon={<Mail/>} label="Email"/><ContactRow icon={<Github/>} label="GitHub"/><ContactRow icon={<Linkedin/>} label="LinkedIn"/></div></div></Section>
     </main>
     <footer className="border-t border-border bg-background"><div className="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-8 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between"><span>© 2026 Karthik. Built with intention.</span><span className="font-mono">FULL STACK / CREATIVE DEVELOPMENT</span></div></footer>
   </div>;
