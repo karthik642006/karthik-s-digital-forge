@@ -97,7 +97,7 @@ function SkillsConstellation({ reducedMotion }: { reducedMotion: boolean }) { re
 
 function ContactRow({ icon, label }: { icon: React.ReactNode; label: string }) {
   const contacts: Record<string, string> = {
-    Email: "mailto:karthikk642006@gmail.com",
+    Email: "mailto:karthik642006@gmail.com",
     GitHub: "https://github.com/karthik642006",
     LinkedIn: "https://www.linkedin.com/in/karthik-k-224372434",
   };
@@ -105,6 +105,6 @@ function ContactRow({ icon, label }: { icon: React.ReactNode; label: string }) {
   return <a href={href} target={label === "Email" ? undefined : "_blank"} rel={label === "Email" ? undefined : "noreferrer"} className="flex items-center gap-3 text-sm text-muted-foreground transition-colors hover:text-primary">
     <span className="grid size-9 place-items-center rounded-md border border-border bg-surface [&_svg]:size-4">{icon}</span>
     <span>{label}</span>
-    <span className="ml-auto font-mono text-[10px] uppercase text-primary">{label === "Email" ? "karthikk642006@gmail.com" : "Open ↗"}</span>
+    <span className="ml-auto font-mono text-[10px] uppercase text-primary">{label === "Email" ? "karthik642006@gmail.com" : "Open ↗"}</span>
   </a>;
 }
